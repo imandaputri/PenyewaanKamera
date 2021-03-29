@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 /**
  * Write a description of class Main here.
