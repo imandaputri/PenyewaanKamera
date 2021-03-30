@@ -15,10 +15,10 @@ public class Main
          SewaKamera kamera2 = new SewaKamera();
          
          kamera1.Konfirmasi(kameraDSLR);
-        // kamera2.Konfirmasi(kameraMirrorLens);
+         kamera2.Konfirmasi(kameraMirrorLens);
          
          kamera1.Transaksi();
-        // kamera2.Transaksi();
+         kamera2.Transaksi();
          
         }
 }
