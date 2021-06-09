@@ -1,0 +1,40 @@
+package DSLR
+    context DSLR::JumlahHari()
+    pre:inputHari>0
+    post:self.hari=inputHari --initial input JumlahHari
+
+    context DSLR::Jaminan()
+    pre:true
+    post:print 'Jangan lupa membawa KTP sebagai jaminan pada saat mengambil kamera'
+
+    context DSLR::ProsesData()
+    pre:self.hari not null
+    post:self.Jaminan() and self.JumlahHari()
+endpackage
+
+package MirrorLens
+    context MirrorLens::JumlahHari()
+    pre:inputHari>0
+    post:self.hari=inputHari --initial input JumlahHari
+
+    context MirrorLens::Jaminan()
+    pre:true
+    post:print 'Jangan lupa membawa KTP sebagai jaminan pada saat mengambil kamera'
+
+    context JumlahHari::ProsesData()
+    pre:self.hari not null
+    post:self.Jaminan() and self.JumlahHari()
+endpackage
+
+package SewaKamera
+    context SewaKamera::Konfirmasi(Sewa:jenisKamera)
+    pre:true
+    post:self.kamera=jenisKamera
+
+    context SewaKamera::Transaksi()
+    pre:kamera not null
+    post:if self.kamera not null
+        then kamera->ProsesData()
+        else print 'Harap memilih kameranya'
+        endif
+endpackage
